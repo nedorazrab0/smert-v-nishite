@@ -36,4 +36,4 @@ for a in first:
         img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
 
 with open("max", "w") as f:
-    f.write(i)
+    f.write(str(i))
