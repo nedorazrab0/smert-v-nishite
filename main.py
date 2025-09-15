@@ -29,7 +29,7 @@ i = 0
 for a in first:
     for b in second:
         i += 1
-        text = first[a] + " " + "от" + " " + second[b]
+        text = a + " " + "от" + " " + b
         text_length = draw.textlength(text, font)
         x = (img.width - text_length)/2
         draw.text((x, y), text, font=font)
