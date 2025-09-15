@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 img = Image.open("./template.png")
 y = img.height/1.9
-draw = ImageDraw.Draw(image)
+draw = ImageDraw.Draw(img)
 font = ImageFont.truetype("./lobster.ttf", 54)
 
 first = ["Смерть", "Богатство", "Долги", "Дипрессия", "Репрессии", "Эфтаназия",
@@ -31,6 +31,6 @@ for a in first:
         i += 1
         text = first[a] + " " + "от" + " " + second[b]
         text_length = draw.textlength(text, font)
-        x = (image.width - text_length)/2
+        x = (img.width - text_length)/2
         draw.text((x, y), text, font=font)
         img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
