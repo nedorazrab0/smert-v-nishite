@@ -22,13 +22,13 @@ second = ["сталина", "жирной коровы", "тиринга", "ог
           "кредитов"]
 
 font = ImageFont.truetype("./lobster.ttf", 54)
-img = Image.open("./template.png")
-y = img.height/1.9
 
 i = 0
 for a in first:
     for b in second:
         i += 1
+        img = Image.open("./template.png")
+        y = img.height/1.9
         draw = ImageDraw.Draw(img)
         text = a + " " + "от" + " " + b
         text_length = draw.textlength(text, font)
