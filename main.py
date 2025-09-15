@@ -4,11 +4,6 @@
 
 from PIL import Image, ImageDraw, ImageFont
 
-img = Image.open("./template.png")
-y = img.height/1.9
-draw = ImageDraw.Draw(img)
-font = ImageFont.truetype("./lobster.ttf", 54)
-
 first = ["Смерть", "Богатство", "Долги", "Дипрессия", "Репрессии", "Эфтаназия",
          "Ностальгия", "Кайф", "Инсульт", "Инфаркт", "Аллергия", "Паралич",
          "Травма", "Банкротство", "Пиздец", "Кастрация", "Запой", "Изжога",
@@ -25,10 +20,15 @@ second = ["сталина", "жирной коровы", "тиринга", "ог
           "сеги", "геншина", "дон", "малоежки", "духоты", "крокодила",
           "доширака", "лечения рака", "1 egg", "долгов", "алиментов", "аниме"]
 
+font = ImageFont.truetype("./lobster.ttf", 54)
+img = Image.open("./template.png")
+y = img.height/1.9
+
 i = 0
 for a in first:
     for b in second:
         i += 1
+        draw = ImageDraw.Draw(img)
         text = a + " " + "от" + " " + b
         text_length = draw.textlength(text, font)
         x = (img.width - text_length)/2
