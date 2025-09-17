@@ -6,7 +6,7 @@ from asyncio import run
 from PIL import Image, ImageDraw, ImageFont
 
 async def saveimg(img, i):
-    await img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
+    img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
 
 first = ["Смерть", "Богатство", "Долги", "Дипрессия", "Репрессии", "Эфтаназия",
          "Ностальгия", "Кайф", "Инсульт", "Инфаркт", "Аллергия", "Паралич",
