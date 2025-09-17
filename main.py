@@ -2,7 +2,11 @@
 #
 # эта хрень генерирует пикчи типа смерть в нищите
 
+from asyncio import run
 from PIL import Image, ImageDraw, ImageFont
+
+async def saveimg(img, i):
+    await img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
 
 first = ["Смерть", "Богатство", "Долги", "Дипрессия", "Репрессии", "Эфтаназия",
          "Ностальгия", "Кайф", "Инсульт", "Инфаркт", "Аллергия", "Паралич",
@@ -39,7 +43,7 @@ for a in first:
         text_length = draw.textlength(text, font)
         x = (img.width - text_length)/2
         draw.text((x, y), text, font=font)
-        img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
+        run(saveimg(img, i))
         print(i)
 
 with open("max", "w") as f:
