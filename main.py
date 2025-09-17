@@ -2,6 +2,7 @@
 #
 # эта хрень генерирует пикчи типа смерть в нищите
 
+from itertools import product
 from PIL import Image, ImageDraw, ImageFont
 
 first = ["Смерть", "Богатство", "Долги", "Дипрессия", "Репрессии", "Эфтаназия",
@@ -28,19 +29,19 @@ second = ["сталина", "жирной коровы", "тиринга", "ог
 
 font = ImageFont.truetype("./lobster.ttf", 54)
 
+items = product(first, second)
 i = 0
-for a in first:
-    for b in second:
-        i += 1
-        img = Image.open("./template.png")
-        y = img.height/1.9
-        draw = ImageDraw.Draw(img)
-        text = a + " " + "от" + " " + b
-        text_length = draw.textlength(text, font)
-        x = (img.width - text_length)/2
-        draw.text((x, y), text, font=font)
-        img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
-        print(i)
+for item in items:
+    i += 1
+    img = Image.open("./template.png")
+    y = img.height/1.9
+    draw = ImageDraw.Draw(img)
+    text = item[0] + " " + "от" + " " + item[1]
+    text_length = draw.textlength(text, font)
+    x = (img.width - text_length)/2
+    draw.text((x, y), text, font=font)
+    img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
+    print(i)
 
 with open("max", "w") as f:
     f.write(str(i))
