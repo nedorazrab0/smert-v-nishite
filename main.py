@@ -40,6 +40,7 @@ for a in first:
         x = (img.width - text_length)/2
         draw.text((x, y), text, font=font)
         img.save(f"./images/{i}.webp", "webp", optimize = True, quality = 0.01)
+        print(i)
 
 with open("max", "w") as f:
     f.write(str(i))
