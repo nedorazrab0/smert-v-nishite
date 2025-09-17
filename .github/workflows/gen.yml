@@ -20,6 +20,11 @@ jobs:
           python3 -m pip install -U pip
           python3 -m pip install -U Pillow
 
+      - name: Remove old imgs
+        run: |
+          git rm -r -- ./images || true
+          mkdir -p -- ./images
+
       - name: Generate images
         run: python3 ./main.py
 
